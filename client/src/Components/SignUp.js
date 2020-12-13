@@ -32,7 +32,7 @@ const styles = (theme) => ({
       marginLeft: 50,
       width: 300,
     },
-    height: "75vh",
+    height: "85vh",
     marginTop: theme.spacing.unit * 6,
     display: "flex",
     flexDirection: "column",
@@ -49,6 +49,7 @@ const styles = (theme) => ({
   },
   form: {
     width: "100%", // Fix IE 11 issue.
+    height: "100%",
     marginTop: theme.spacing.unit,
   },
   submit: {
@@ -168,6 +169,8 @@ class SignUp extends Component {
                 >
                   Sign Up
                 </Button>
+                <br />
+                <br />
                 <Link to="/login" activeClassName="active">
                   Have an account ? Log In
                 </Link>

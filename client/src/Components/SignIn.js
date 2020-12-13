@@ -147,6 +147,8 @@ class SignIn extends Component {
                 >
                   Log In
                 </Button>
+                <br />
+                <br />
                 <Link to="/signup" activeClassName="active">
                   Don't Have an Account? Sign Up
                 </Link>

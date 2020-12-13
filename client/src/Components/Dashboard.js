@@ -13,6 +13,15 @@ import LockIcon from "@material-ui/icons/Lock";
 import { getCertificate, verifyCertificate } from "../Utils/apiConnect";
 import Loader from "./Loader";
 import Certificate from "./Certificate";
+import  jsPDF  from "jspdf";
+import * as html2canvas from 'html2canvas';
+//import { html2canvas } from "html2canvas";
+
+//import Doc from './DocService';
+//import PdfContainer from './PdfContainer';
+
+//<PdfContainer createPdf={this.createPdf}>
+          
 
 const styles = (theme) => ({
   root: {
@@ -41,7 +50,7 @@ const styles = (theme) => ({
       maxWidth: "95%",
       margin: theme.spacing.unit * 2,
     },
-    maxWidth: "60%",
+    maxWidth: "100%",
     minWidth: "60%",
     margin: theme.spacing.unit * 5,
     display: "flex",
@@ -77,7 +86,7 @@ class Dashboard extends React.Component {
       assignDate: null,
       expirationDate: null,
     },
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/APU-logo.png",
+    logo: "http://www.mnnit.ac.in/swo/images/MNNIT.png",
   };
 
   verification = () => {
@@ -86,6 +95,8 @@ class Dashboard extends React.Component {
       this.setState({ authorized: success, verified: true, loading: false });
     });
   };
+
+  //createPdf = (html) => Doc.createPdf(html);
 
   componentDidMount() {
     const certificateId = this.props.match.params.id;
@@ -113,6 +124,19 @@ class Dashboard extends React.Component {
     });
   }
 
+   printDocument() {
+    const input = document.getElementById('divToPrint');
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL();
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("certificate.pdf");
+      });
+  }
+
+
   render() {
     const { classes } = this.props;
     const {
@@ -132,8 +156,13 @@ class Dashboard extends React.Component {
     } = this.state.info;
     const tooltipInfo = `This verifies whether the certification is secured and stored with correct information in the blockchain`;
     return (
+      <div>
+      <div className="mb5" styles = {{left:"50%"}}>
+        <button onClick={this.printDocument}>Print</button>
+      </div>
+      <div id="divToPrint">
       <Grid container className={classes.root}>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={9}>
           <Paper className={classes.paper}>
             {pageLoad ? (
               <Loader SIZE={170} />
@@ -148,9 +177,9 @@ class Dashboard extends React.Component {
             )}
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={3}>
           {pageLoad ? (
-            <Loader SIZE={70} />
+            <Loader SIZE={50} />
           ) : (
             <Paper className={classes.rightpaper}>
               <div>
@@ -166,6 +195,7 @@ class Dashboard extends React.Component {
                 <Typography variant="caption" color="inherit" noWrap>
                   Assigned on: {assignDate}
                 </Typography>
+                <br />
                 <Typography variant="caption" color="inherit" noWrap>
                   Expires on: {expirationDate}
                 </Typography>
@@ -239,6 +269,8 @@ class Dashboard extends React.Component {
           )}
         </Grid>
       </Grid>
+      </div>
+      </div>
     );
   }
 }

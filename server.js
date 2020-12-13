@@ -94,7 +94,7 @@ app.get("/certificate/all", (req, res) => {
 // });
 
 app.post("/certificate/generate", (req, res) => {
-  const { candidateName, orgName, courseName, assignDate, duration } = req.body;
+  const { candidateName, orgName, courseName, assignDate, duration, cpi } = req.body;
 
   const given = new Date(assignDate);
 
@@ -109,6 +109,7 @@ app.post("/certificate/generate", (req, res) => {
     expirationDate,
     assignDate,
     duration,
+    cpi,
   });
 
   certificate
@@ -118,6 +119,7 @@ app.post("/certificate/generate", (req, res) => {
       obj
         .appendBlockchain()
         .then((data) => {
+          console.log(dbRes);
           const { transactionHash, blockHash } = data.receipt;
           res.status(201).send({
             receipt: {

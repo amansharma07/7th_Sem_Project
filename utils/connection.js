@@ -60,7 +60,8 @@ const generateCertificate = function(
   candidateName,
   orgName,
   courseName,
-  expirationDate
+  expirationDate,
+  cpi
 ) {
   const self = this;
 
@@ -77,6 +78,7 @@ const generateCertificate = function(
           orgName,
           courseName,
           expirationDate,
+          cpi,
           { from: accountAddress.toLowerCase(), gas: 200000 }
         )
       )

@@ -8,6 +8,7 @@ import Homepage from "./Components/Homepage";
 import Dashboard from "./Components/Dashboard";
 import GenerateForm from "./Components/GenerateForm";
 import CertificatesTable from "./Components/CertificatesTable";
+import Upload from "./Components/Upload";
 
 class App extends Component {
   state = {

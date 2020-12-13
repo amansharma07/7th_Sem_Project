@@ -4,9 +4,9 @@ const request = require("supertest");
 const { app } = require("../server");
 
 const obj = {
-  candidateName: "Lim Gin Keat",
-  courseName: "SE-2020",
-  orgName: "Asia Pacific University",
+  candidateName: "Aman Sharma",
+  courseName: "Information Technology",
+  orgName: "MNNIT Allahabad",
   assignDate: 1545316652295,
   duration: 2
 };

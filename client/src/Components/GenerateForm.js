@@ -82,13 +82,14 @@ class GenerateForm extends React.Component {
   state = {
     firstname: "",
     lastname: "",
-    organization: "Asia Pacific University",
-    orgLogo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/APU-logo.png",
+    organization: "MNNIT Allahabad",
+    orgLogo: "http://www.mnnit.ac.in/swo/images/MNNIT.png",
     coursename: "",
     assignedOn: null,
     duration: 0,
     currentState: "normal",
     emailId: "",
+    cpi: "",
   };
 
   handleChange = (name) => (event) => {
@@ -111,6 +112,7 @@ class GenerateForm extends React.Component {
       assignedOn,
       duration,
       emailId,
+      cpi,
     } = this.state;
     let candidateName = `${firstname} ${lastname}`;
     let assignDate = new Date(assignedOn).getTime();
@@ -120,7 +122,8 @@ class GenerateForm extends React.Component {
       organization,
       assignDate,
       parseInt(duration),
-      emailId
+      emailId,
+      cpi
     )
       .then((data) => {
         if (data.data !== undefined) {
@@ -145,6 +148,7 @@ class GenerateForm extends React.Component {
       orgLogo,
       emailId,
       certificateId,
+      cpi,
     } = this.state;
     return (
       <Grid container>
@@ -250,6 +254,21 @@ class GenerateForm extends React.Component {
                   value={emailId}
                   onChange={this.handleChange("emailId")}
                 />
+                <TextField
+                  required
+                  id="cpi"
+                  label="CPI"
+                  helperText="Cumulative CPI obtained in degree"
+                  value={cpi}
+                  onChange={this.handleChange("cpi")}
+                  type="number"
+                  className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  margin="normal"
+                  variant="outlined"
+                />
               </Grid>
               <Grid item xs={12} sm={12}>
                 <SubmitAnimation
@@ -264,6 +283,8 @@ class GenerateForm extends React.Component {
                   >
                     <br />
                     Generated Certificate ID: {certificateId}
+                    <br />
+                    The above ID is mailed to the provided email id.
                   </Typography>
                 )}
               </Grid>

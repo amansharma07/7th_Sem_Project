@@ -18,9 +18,9 @@ dbuser = process.env.DB_USER;
 dbpassword = process.env.DB_PASSWORD;
 dbname = process.env.DB_NAME;
 
-// const mongoURL = `mongodb://${dbuser}:${dbpassword}@${dbhost}:${dbport}/${dbname}`;
+const mongoURL = `mongodb://${dbuser}:${dbpassword}@${dbhost}:${dbport}/${dbname}?authSource=certification&w=1`;
 
-const mongoURL = `mongodb+srv://lio123:lio123@certification.gicnu.mongodb.net/certification?retryWrites=true&w=majority`;
+//const mongoURL = `mongodb+srv://lio123:lio123@certification.gicnu.mongodb.net/certification?retryWrites=true&w=majority`;
 
 console.log(mongoURL);
 

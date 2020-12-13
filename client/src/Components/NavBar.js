@@ -124,7 +124,7 @@ class NavBar extends React.Component {
           Home
         </MenuItem>
         <MenuItem component={Link} to="/login">
-          Login
+          Login/SignUp
         </MenuItem>
         <MenuItem component={Link} to="/generate-certificate">
           Generate Certificate
@@ -175,7 +175,7 @@ class NavBar extends React.Component {
               color="inherit"
               noWrap
             >
-              APU E-CERT
+              CertoSol
             </Typography>
 
             <div className={classes.grow} />

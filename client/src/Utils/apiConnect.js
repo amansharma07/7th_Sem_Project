@@ -46,7 +46,8 @@ export const generateCertificate = (
   orgName,
   assignDate,
   duration,
-  emailId
+  emailId,
+  cpi
 ) =>
   fetch(`${host}/certificate/generate`, {
     ...postHeader,
@@ -57,6 +58,7 @@ export const generateCertificate = (
       assignDate,
       duration,
       emailId,
+      cpi,
     }),
   })
     .then((res) => res.json())

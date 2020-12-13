@@ -16,7 +16,7 @@
     "ganache": "ganache-cli -p 8545 &",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
-  "author": "Lim Gin Keat",
+  "author": "Aman Sharma",
   "license": "",
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -45,8 +45,10 @@
     "dotenv": "^6.2.0",
     "eth-rpc-errors": "^3.0.0",
     "express": "^4.16.2",
+    "html2canvas": "^1.0.0-rc.7",
     "jquery": "^3.5.0",
     "jsonwebtoken": "^8.5.1",
+    "jspdf": "^2.2.0",
     "lsof": "^0.1.0",
     "mongoose": "^5.7.5",
     "nodemon": "^1.14.12",

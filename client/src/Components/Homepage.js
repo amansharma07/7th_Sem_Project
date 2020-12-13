@@ -1,13 +1,13 @@
 import React from "react";
-import apulogo from "../apulogo.svg";
+import logo from "../logo.svg";
 import "./Homepage.css";
 function Homepage(props) {
   return (
     <div>
       <header className="App-header">
-        <img src={apulogo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          This is the homepage of APU E-CERT web application.
+          This is the homepage of CERTOSOL web application.
           <br />
           For University Admin, visit the account icon to Login.
           <br />
@@ -18,7 +18,9 @@ function Homepage(props) {
       </header>
 
       <footer className="footer">
-        Final Year Project by Lim Gin Keat © Copyright 2020
+        Final Year Project by IT-Group 25
+        <br />
+        Aman Sharma, Vikas Gautam and Abhishek Gangwar
       </footer>
     </div>
   );

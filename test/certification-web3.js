@@ -7,9 +7,9 @@ contract("Certification", accounts => {
   it("generates a certificate with correct data", () =>
     Certification.deployed()
       .then(instance => {
-        obj.candidateName = "Lim Gin Keat";
-        obj.orgName = "Asia Pacific University";
-        obj.courseName = "SE-2020";
+        obj.candidateName = "Aman Sharma";
+        obj.orgName = "MNNIT Allahabad";
+        obj.courseName = "Information Technology";
         obj.expirationDate = new Date().getTime();
         obj.instance = instance;
         obj.id = "5c0157fd3ff47a2a54075b01";

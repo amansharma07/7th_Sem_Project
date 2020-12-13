@@ -34,6 +34,11 @@ const CertificateSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  cpi: {
+    type: Number,
+    required: true,
+    trim: true,
+  },
 });
 
 CertificateSchema.methods.toJSON = function () {
@@ -59,13 +64,17 @@ CertificateSchema.methods.verifyData = function () {
         orgName: blockData[1],
         courseName: blockData[2],
         expirationDate: parseInt(blockData[3]),
+        cpi: parseInt(blockData[4]),
       };
       const databaseObject = {
         candidateName: data.candidateName,
         orgName: data.orgName,
         courseName: data.courseName,
         expirationDate: data.expirationDate,
+        cpi: data.cpi,
       };
+      console.log(blockData[4]);
+      console.log(data.cpi);
       if (JSON.stringify(responseObject) === JSON.stringify(databaseObject))
         return true;
       else throw false;
@@ -78,8 +87,8 @@ CertificateSchema.methods.verifyData = function () {
 CertificateSchema.methods.appendBlockchain = function () {
   const data = this;
 
-  const { candidateName, orgName, courseName, expirationDate } = data;
-
+  const { candidateName, orgName, courseName, expirationDate, cpi } = data;
+  
   const certificateId = data._id.toString();
 
   return truffle_connect.generateCertificate(
@@ -87,7 +96,8 @@ CertificateSchema.methods.appendBlockchain = function () {
     candidateName,
     orgName,
     courseName,
-    expirationDate
+    expirationDate,
+    cpi
   );
 };
 
